@@ -7,6 +7,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/mainPage.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
@@ -40,7 +41,7 @@
                                 </span>
                     </div><!-- /input-group -->
                 </form>
-                <li><a class="left-a" href="#">登陆</a></li>
+                <li><a class="left-a" data-toggle="modal" href="#" data-target="#myModal">登陆</a></li>
                 <li><a class="left-a" href="#">注册</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -202,9 +203,24 @@
         <div class="col-md-12">11111111111111</div>
     </div>
 </div>
+<!--登陆模态（弹出式）-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">欢迎光临小站~</h4>
+            </div>
+            <div class="modal-body">在这里添加一些文本</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 </body>
 <script>
-    //巨幕淡出效果
     $(document).ready(function(){
         $(".jumbotron").fadeIn(1000);
         $("h1").fadeIn(2000);
@@ -214,15 +230,17 @@
     var beforeWinPos =0;//上一次滚动条位置，根据这个判断用户是继续下滑还是返回
     $(window).scroll(function(event){
         var winPos = $(window).scrollTop();
-        if(winPos<100&&beforeWinPos-winPos>0&&beforeWinPos>=100){
+        if(winPos<200&&beforeWinPos-winPos>0&&beforeWinPos>=200){
             $(".navbar").hide();
             $(".navbar").removeClass("navbar-inverse");
             $(".navbar").fadeIn(200);
+            $(".navbar-form").css('opacity',0.5);
         }
-        if(winPos>=100&&beforeWinPos-winPos<0&&beforeWinPos<100){
+        if(winPos>=200&&beforeWinPos-winPos<0&&beforeWinPos<200){
             $(".navbar").hide();
             $(".navbar").addClass("navbar-inverse");
             $(".navbar").fadeIn(200);
+            $(".navbar-form").css('opacity',1);
         }
         beforeWinPos = winPos;
     });
