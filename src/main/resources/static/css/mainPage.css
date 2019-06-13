@@ -9,3 +9,37 @@
 .glyphicon glyphicon-search{
     font-size: 1000px
 }
+.navbar{
+    border-radius:4px;
+    margin-bottom: 0px;
+}
+.jumbotron {
+    margin-bottom: 0px;
+    background:url("../img/bigCat.jpeg");
+}
+h1{
+    margin-top: 5px;
+    text-align: center;
+    display:none;
+}
+h3{
+    text-align: center;
+    display:none;
+}
+.jumbotron {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    display:none;
+}
+.row{
+    margin-bottom: 10px;
+    margin-top: 12px;
+}
+.rigth-a{
+    color: #19111c;
+    font-weight:bold
+}
+.left-a{
+    color: #f2ebff;
+    font-weight:bold
+}
