@@ -1,22 +1,18 @@
 package com.xjy.cat.controller;
 
-
+import com.xjy.cat.DO.ResponseDO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class HelloController extends BaseController{
 
-
     @RequestMapping("/hello")
-    public ModelAndView hello(){
-        Map<String,Object> map = new HashMap<>();
-        map.put("name","thymeleaf");
-        return html("hello",map);
+    @ResponseBody
+    public ResponseDO hello(){
+        return build(true, "Hello", System.currentTimeMillis());
     }
 
     @RequestMapping("/main")

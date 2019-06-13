@@ -17,10 +17,11 @@
     margin-bottom: 0px;
     background:url("../img/bigCat.jpeg");
 }
-h1{
+h1 {
     margin-top: 5px;
     text-align: center;
     display:none;
+    font-size: 500px;
 }
 h3{
     text-align: center;
