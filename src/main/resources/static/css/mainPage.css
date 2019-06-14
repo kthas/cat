@@ -47,8 +47,3 @@ h3{
 .navbar-form{
     opacity: 0.5;
 }
-/*解决登陆框体触发时拉伸导航栏问题*/
-body.modal-open {
-    overflow-y: auto !important;
-    padding-right: 0 !important;
-}
