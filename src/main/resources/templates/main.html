@@ -41,8 +41,8 @@
                                 </span>
                     </div><!-- /input-group -->
                 </form>
-                <li><a href="#" class="left-a" id="sign" data-container="body" data-toggle="popover" data-placement="bottom"
-                       data-trigger="click" data-content="底部的 Popover 中的一些内容" onclick="return false;">登陆</a></li>
+                <li><a href="javascript:void(0);" class="left-a" id="sign" data-container="body" data-toggle="popover" data-placement="bottom"
+                       data-trigger="click" data-content="底部的 Popover 中的一些内容" onclick="">登陆</a></li>
                 <li><a class="left-a" href="#">注册</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -166,10 +166,11 @@
     });
     //滚动条监控
     var beforeWinPos =0;//上一次滚动条位置，根据这个判断用户是继续下滑还是返回
+    var loginIsHide = true;
     $(window).scroll(function(event){
-        if($(".popover-content").css("display")=="block"){
-            $('#sign').popover('hide');
-        }
+ /*       if($(".popover-content").css("display")=="block"){
+            $("#sign").trigger('click');
+        }*/
         var winPos = $(window).scrollTop();
         if(winPos<200&&beforeWinPos-winPos>0&&beforeWinPos>=200){
             $(".navbar").hide();
