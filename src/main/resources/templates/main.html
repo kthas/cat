@@ -8,6 +8,7 @@
     <link href="css/mainPage.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="js/layer/layer.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
@@ -41,8 +42,7 @@
                                 </span>
                     </div><!-- /input-group -->
                 </form>
-                <li><a href="javascript:void(0);" class="left-a" id="sign" data-container="body" data-toggle="popover" data-placement="bottom"
-                       data-trigger="click" data-content="底部的 Popover 中的一些内容" onclick="">登陆</a></li>
+                <li><a href="javascript:void(0);" class="left-a"  id="sign">登陆</a></li>
                 <li><a class="left-a" href="#">注册</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -166,11 +166,7 @@
     });
     //滚动条监控
     var beforeWinPos =0;//上一次滚动条位置，根据这个判断用户是继续下滑还是返回
-    var loginIsHide = true;
     $(window).scroll(function(event){
- /*       if($(".popover-content").css("display")=="block"){
-            $("#sign").trigger('click');
-        }*/
         var winPos = $(window).scrollTop();
         if(winPos<200&&beforeWinPos-winPos>0&&beforeWinPos>=200){
             $(".navbar").hide();
@@ -186,10 +182,19 @@
         }
         beforeWinPos = winPos;
     });
-    //登录按钮启动弹出框
-    $(function () {
-        $("[data-toggle='popover']").popover();
+
+    //页面层
+
+    $("#sign").click(function(){
+        layer.open({
+            type: 1,
+            title:"欢迎光临小站！",
+            skin: 'layui-layer-rim', //加上边框
+            area: ['420px', '240px'], //宽高
+            content: 'html内容'
+        })
     });
+
 
 </script>
 </html>
