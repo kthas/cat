@@ -158,6 +158,10 @@
 </div>
 </body>
 <script>
+    layer.config({
+        extend: 'mySkin/style.css', //加载您的扩展样式
+        skin: 'mySkin'
+    });
     //巨幕淡出效果
     $(document).ready(function(){
         $(".jumbotron").fadeIn(1000);
@@ -182,16 +186,15 @@
         }
         beforeWinPos = winPos;
     });
-
     //页面层
-
     $("#sign").click(function(){
         layer.open({
             type: 1,
-            title:"欢迎光临小站！",
-            skin: 'layui-layer-rim', //加上边框
-            area: ['420px', '240px'], //宽高
-            content: 'html内容'
+            title:['欢迎光临猫薄荷!','font-weight;bold'],
+            skin: 'layui-layer-lan',
+            area: ['420px', '300px'], //宽高
+            offset:'200px',//距离顶部位置
+            content: '这里什么也没有'
         })
     });
 
