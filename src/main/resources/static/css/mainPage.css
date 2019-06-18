@@ -47,9 +47,17 @@ h3{
 .navbar-form{
     opacity: 0.5;
 }
-.input-group.input-group-lg{
+#name{
     width: 80%;
+    height: 40px;
     margin-left: 42px;
     margin-right: 42px;
-    margin-top: 30px;
+    margin-top: 42px;
+}
+#password{
+    width: 80%;
+    height: 40px;
+    margin-left: 42px;
+    margin-right: 42px;
+    margin-top: 25px;
 }
