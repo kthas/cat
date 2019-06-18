@@ -9,6 +9,12 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
     <script src="js/layer/layer.js"></script>
+    <style>
+        body .demo-class .layui-layer-title{
+            background: #e0dbc6;
+            color: #459e21
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
@@ -158,10 +164,6 @@
 </div>
 </body>
 <script>
-    layer.config({
-        extend: 'mySkin/style.css', //加载您的扩展样式
-        skin: 'mySkin'
-    });
     //巨幕淡出效果
     $(document).ready(function(){
         $(".jumbotron").fadeIn(1000);
@@ -191,10 +193,13 @@
         layer.open({
             type: 1,
             title:['欢迎光临猫薄荷!','font-weight;bold'],
-            skin: 'layui-layer-lan',
+            skin: 'demo-class',
             area: ['420px', '300px'], //宽高
             offset:'200px',//距离顶部位置
-            content: '这里什么也没有'
+            content: '<div class="input-group input-group-lg">\n' +
+                '  <span class="input-group-addon" id="sizing-addon1">账号</span>\n' +
+                '  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">\n' +
+                '</div>'
         })
     });
 
