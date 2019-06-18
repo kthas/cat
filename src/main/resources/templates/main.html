@@ -12,7 +12,8 @@
     <style>
         body .demo-class .layui-layer-title{
             background: #e0dbc6;
-            color: #459e21
+            color: #459e21;
+            font-weight:bold
         }
     </style>
 </head>
@@ -192,13 +193,17 @@
     $("#sign").click(function(){
         layer.open({
             type: 1,
-            title:['欢迎光临猫薄荷!','font-weight;bold'],
+            title:'欢迎光临猫薄荷!',
             skin: 'demo-class',
             area: ['420px', '300px'], //宽高
             offset:'200px',//距离顶部位置
             content: '<div class="input-group input-group-lg">\n' +
                 '  <span class="input-group-addon" id="sizing-addon1">账号</span>\n' +
-                '  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">\n' +
+                '  <input type="text" class="form-control" placeholder="Username..." aria-describedby="sizing-addon1">\n' +
+                '</div>\n'+
+                '<div class="input-group input-group-lg">\n'+
+                '  <span class="input-group-addon" id="sizing-addon1">密码</span>\n' +
+                '  <input type="password" class="form-control" placeholder="Password..." aria-describedby="sizing-addon1">\n' +
                 '</div>'
         })
     });
