@@ -199,12 +199,19 @@
             area: ['420px', '320px'], //宽高
             move:false,
             offset:'190px',//距离顶部位置
-            content:'<form action="" id="signForm">'+
+            content:'<div id="signForm">'+
                 '<img src="img/halfCat.jpg" id="sign-img" class="img-rounded"/>\n'+
-                '<input type="text" id="name" class="form-control" placeholder="账号" value="">' +
-                '<input type="password" id="password" class="form-control" placeholder="密码" value="">' +
-                '<a href="#" class="button button-glow button-border button-rounded button-primary">登陆</a>'+
-                '</form>'
+                '<input type="text" id="name" v-model="name" class="form-control" placeholder="账号" value="">' +
+                '<input type="password" id="password" v-model="password" class="form-control" placeholder="密码" value="">' +
+                '<a href="javascript:void(0);"  v-on:click="sign" class="button button-glow button-border button-rounded button-primary" >登陆</a>'+
+                '</div>'
+        })
+        var sign = new Vue({
+            el:'#signForm',
+            data: {
+                name: 'Runoob',
+                password: '菜鸟教程\r\nhttp://www.runoob.com'
+            }
         })
     });
 
@@ -218,17 +225,15 @@
             move:false,
             offset:'190px',//距离顶部位置
             content:'<form action="" id="signForm">'+
-                '<img src="img/sitCat.jpg" id="register-img" class="img-rounded"/>\n'+
-                '<input type="text" id="name" class="form-control" placeholder="账号" value="">' +
+                '<input type="text" id="register-name" class="form-control" placeholder="账号" value="">' +
                 '<input type="password" id="password" class="form-control" placeholder="密码" value="">' +
                 '<input type="password" id="re-password" class="form-control" placeholder="确认密码" value="">' +
                 '<input type="text" id="nickname" class="form-control" placeholder="昵称" value="">' +
+                '<img src="img/sitCat.jpg" id="register-img" class="img-rounded"/>\n'+
                 '<a href="#" class="button button-glow button-border button-rounded button-primary">注册</a>'+
                 '</form>'
         })
     });
-
-
 
 </script>
 </html>
