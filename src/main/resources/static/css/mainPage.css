@@ -38,26 +38,70 @@ h3{
 }
 .rigth-a{
     color: #19111c;
-    font-weight:bold
+    font-weight:bold;
 }
 .left-a{
     color: #f2ebff;
-    font-weight:bold
+    font-weight:bold;
+    display:none;
 }
 .navbar-form{
     opacity: 0.5;
 }
+.layui-layer-content{
+
+}
 #name{
     width: 80%;
-    height: 40px;
+    height: 42px;
     margin-left: 42px;
     margin-right: 42px;
-    margin-top: 42px;
 }
 #password{
     width: 80%;
-    height: 40px;
+    height: 42px;
     margin-left: 42px;
     margin-right: 42px;
     margin-top: 25px;
+    margin-bottom: 25px;
+}
+#password{
+    width: 80%;
+    height: 42px;
+    margin-left: 42px;
+    margin-right: 42px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+#re-password{
+     width: 80%;
+     height: 42px;
+     margin-left: 42px;
+     margin-right: 42px;
+     margin-top: 25px;
+     margin-bottom: 25px;
+ }
+#nickname{
+    width: 80%;
+    height: 42px;
+    margin-left: 42px;
+    margin-right: 42px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.button{
+    margin-left: 150px;
+}
+#sign-img{
+    width: 130px;
+    height: 100px;
+    margin-left: 135px;
+    margin-right:135px;
+}
+#register-img{
+    width: 130px;
+    height: 110px;
+    margin-top: 10px;
+    margin-left: 135px;
+    margin-right:135px;
 }
