@@ -209,8 +209,14 @@
         var sign = new Vue({
             el:'#signForm',
             data: {
-                name: 'Runoob',
-                password: '菜鸟教程\r\nhttp://www.runoob.com'
+                name: '',
+                password: ''
+            },
+            methods:{
+                sign:function(){
+                    alert(this.name);
+                    alert(this.password);
+                }
             }
         })
     });
