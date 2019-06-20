@@ -5,6 +5,7 @@ import com.xjy.cat.intf.UserService;
 import com.xjy.cat.kits.AccessTokenKit;
 import com.xjy.cat.model.User;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -16,7 +17,7 @@ public class UserController extends BaseController {
     private UserService userService;
 
     @RequestMapping("/login")
-    public ResponseDO login(String username, String password) {
+    public ResponseDO login(@RequestParam(value="username") String username,@RequestParam(value="password") String password) {
         if(username == null || username.isEmpty()) {
             return build(false, "用户名不能为空");
         }

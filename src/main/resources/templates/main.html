@@ -191,34 +191,40 @@
         beforeWinPos = winPos;
     });
     //登陆弹出框
-    $("#sign").click(function(){
+    $("#sign").click(function() {
         layer.open({
             type: 1,
-            title:false,
+            title: false,
             skin: 'demo-class',
             area: ['420px', '320px'], //宽高
-            move:false,
-            offset:'190px',//距离顶部位置
-            content:'<div id="signForm">'+
-                '<img src="img/halfCat.jpg" id="sign-img" class="img-rounded"/>\n'+
-                '<input type="text" id="name" v-model="name" class="form-control" placeholder="账号" value="">' +
+            move: false,
+            offset: '190px',//距离顶部位置
+            content: '<form id="signForm">' +
+                '<img src="img/halfCat.jpg" id="sign-img" class="img-rounded"/>\n' +
+                '<input type="text" id="name" v-model="username" class="form-control" placeholder="账号" value="">' +
                 '<input type="password" id="password" v-model="password" class="form-control" placeholder="密码" value="">' +
-                '<a href="javascript:void(0);"  v-on:click="sign" class="button button-glow button-border button-rounded button-primary" >登陆</a>'+
-                '</div>'
+                '<a href="javascript:void(0);"  v-on:click="signFunction" class="button button-glow button-border button-rounded button-primary" >登陆</a>' +
+                '</form>'
         })
-        var sign = new Vue({
-            el:'#signForm',
+        new Vue({
+            el: '#signForm',
             data: {
-                name: '',
+                username: '',
                 password: ''
             },
-            methods:{
-                sign:function(){
-                    alert(this.name);
-                    alert(this.password);
+            methods: {
+                signFunction: function () {
+                    console.log(this.username, this.password);
+                    let param = new URLSearchParams();
+                    param.append('username',this.username);
+                    param.append('password',this.password);
+                    axios.post('/login',param)
+                        .then(function(response){
+                            console.log(response.data);
+                        })
                 }
             }
-        })
+        });
     });
 
     //注册弹出框
