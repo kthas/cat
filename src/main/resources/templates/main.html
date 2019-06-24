@@ -221,6 +221,17 @@
                     axios.post('/login',param)
                         .then(function(response){
                             console.log(response.data);
+                            let data = response.data;
+                            if(data.success==false){
+                                if(data.msg=="用户名不能为空")
+                                    layer.tips(data.msg,"#name",{tips: [2,'#4fdb2f']});
+                                if(data.msg=="密码不能为空")
+                                    layer.tips(data.msg,"#password",{tips: [2,'#4fdb2f']});
+                                if(data.msg=="用户名或密码错误")
+                                    layer.msg('用户名或密码错误',{tips: [2,'#4fdb2f']});
+                            }else{
+
+                            }
                         })
                 }
             }
