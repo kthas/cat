@@ -17,7 +17,7 @@ public class UserController extends BaseController {
     private UserService userService;
 
     @RequestMapping("/login")
-    public ResponseDO login(@RequestParam(value="username") String username,@RequestParam(value="password") String password) {
+    public ResponseDO login(String username,String password) {
         if(username == null || username.isEmpty()) {
             return build(false, "用户名不能为空");
         }
@@ -30,5 +30,10 @@ public class UserController extends BaseController {
         }
         return build(false, "用户名或密码错误");
     }
+
+/*    @RequestMapping("/register")
+    public  ResponseDO register(User user){
+        userService
+    }*/
 
 }

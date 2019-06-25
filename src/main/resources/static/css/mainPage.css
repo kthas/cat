@@ -65,14 +65,14 @@ h3{
     margin-top: 25px;
     margin-bottom: 25px;
 }
-#register-name{
+#username{
     width: 80%;
     height: 42px;
-    margin-top: 50px;
+    margin-top: 70px;
     margin-left: 42px;
     margin-right: 42px;
 }
-#re-password{
+#re_password{
      width: 80%;
      height: 42px;
      margin-left: 42px;
@@ -88,7 +88,7 @@ h3{
     margin-top: 25px;
 }
 .button{
-    margin-left: 140px;
+    margin-left: 152px;
 }
 #sign-img{
     width: 130px;
@@ -97,8 +97,7 @@ h3{
     margin-right:135px;
 }
 #register-img{
-    width: 150px;
-    height: 110px;
-    margin-left: 125px;
-    margin-right:125px;
+    width: 158px;
+    height: 85px;
+    margin-left: 120px;
 }

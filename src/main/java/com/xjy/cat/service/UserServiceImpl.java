@@ -13,4 +13,8 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return user;
     }
+
+    public void saveUser(User user){
+
+    }
 }

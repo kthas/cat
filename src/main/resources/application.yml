@@ -5,7 +5,14 @@ spring:
     servlet:
       content-type: text/html
     cache: false
-
+  datasource:
+    url: jdbc:mysql://39.108.75.221:3306/CAT/characterEncoding=UTF-8
+    data-username: xjy
+    data-password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
 server:
   servlet:
     context-path: /
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.xjy.cat.model
