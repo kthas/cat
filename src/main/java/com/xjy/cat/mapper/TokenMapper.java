@@ -12,7 +12,7 @@ public interface TokenMapper {
     @Select("SELECT * FROM cat_access WHERE BINARY accessToken = #{0}")
     Token getByToken(String token);
 
-    @Insert("INSERT INTO cat_access VALUES (#{accessToken}, #{userId}, #{createTime})")
+    @Insert("INSERT INTO cat_access VALUES (null, #{accessToken}, #{userId}, #{createTime})")
     void insert(Token token);
 
     @Delete("DELETE FROM cat_access WHERE id = #{0}")

@@ -218,7 +218,7 @@
                     let param = new URLSearchParams();
                     param.append('username',this.username);
                     param.append('password',this.password);
-                    axios.post('/login',param)
+                    axios.post('/user/login',param)
                         .then(function(response){
                             console.log(response.data);
                             let data = response.data;
@@ -248,7 +248,7 @@
             move:false,
             offset:'190px',//距离顶部位置
             content:'<form action="" id="registerForm">'+
-                '<img src="img/sleep1.gif" id="register-img" class="img-rounded"/>\n'+
+                '<img src="img/halfCat.jpg" id="sign-img" class="img-rounded"/>\n' +
                 '<input type="text" id="username" v-model="username" class="form-control" placeholder="账号" value="">' +
                 '<input type="password" id="password" v-model="password" class="form-control" placeholder="密码" value="">' +
                 '<input type="password" id="re_password" v-model="re_password" class="form-control" placeholder="确认密码" value="">' +

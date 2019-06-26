@@ -7,7 +7,7 @@ import java.util.UUID;
 public class AccessTokenKit {
 
     public static LoginDO getToken() {
-        return new LoginDO().setAccess_token(UUID.randomUUID().toString().replace("-", "").toLowerCase()).setDate(System.currentTimeMillis()).setRandom_id(RandomKit.getInt());
+        return new LoginDO().setAccessToken(UUID.randomUUID().toString().replace("-", "").toLowerCase()).setDate(System.currentTimeMillis()).setRandomId(RandomKit.getInt());
     }
 
 }

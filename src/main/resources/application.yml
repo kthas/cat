@@ -7,7 +7,7 @@ spring:
     cache: false
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://39.108.75.221:3306/CAT/auth_service?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false
+    url: jdbc:mysql://39.108.75.221:3306/CAT?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false
     username: xjy
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
