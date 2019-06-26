@@ -1,34 +1,32 @@
 package com.xjy.cat.DO;
 
-import java.util.Date;
-
 public class LoginDO {
 
-    private String access_token;
+    private String accessToken;
 
-    private int random_id;
+    private int randomId;
 
     private long date;
 
-    public String getAccess_token() {
-        return access_token;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public int getRandom_id() {
-        return random_id;
+    public int getRandomId() {
+        return randomId;
     }
 
     public long getDate() {
         return date;
     }
 
-    public LoginDO setAccess_token(String access_token) {
-        this.access_token = access_token;
+    public LoginDO setAccessToken(String access_token) {
+        this.accessToken = access_token;
         return this;
     }
 
-    public LoginDO setRandom_id(int random_id) {
-        this.random_id = random_id;
+    public LoginDO setRandomId(int random_id) {
+        this.randomId = random_id;
         return this;
     }
 
@@ -40,8 +38,8 @@ public class LoginDO {
     @Override
     public String toString() {
         return "LoginDO [" +
-                "access_token='" + access_token + '\'' +
-                ", random_id=" + random_id +
+                "access_token='" + accessToken + '\'' +
+                ", random_id=" + randomId +
                 ", date=" + date +
                 ']';
     }
