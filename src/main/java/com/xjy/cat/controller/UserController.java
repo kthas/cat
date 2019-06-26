@@ -31,9 +31,10 @@ public class UserController extends BaseController {
         return build(false, "用户名或密码错误");
     }
 
-/*    @RequestMapping("/register")
+    @RequestMapping("/register")
     public  ResponseDO register(User user){
-        userService
-    }*/
+        userService.saveUser(user);
+        return build(true,"注册成功");
+    }
 
 }

@@ -6,10 +6,11 @@ spring:
       content-type: text/html
     cache: false
   datasource:
-    url: jdbc:mysql://39.108.75.221:3306/CAT/characterEncoding=UTF-8
-    data-username: xjy
-    data-password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.108.75.221:3306/CAT/auth_service?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false
+    username: xjy
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
 server:
   servlet:
     context-path: /

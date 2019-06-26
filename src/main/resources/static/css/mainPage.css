@@ -68,7 +68,7 @@ h3{
 #username{
     width: 80%;
     height: 42px;
-    margin-top: 70px;
+    margin-top: 0px;
     margin-left: 42px;
     margin-right: 42px;
 }
@@ -86,6 +86,7 @@ h3{
     margin-left: 42px;
     margin-right: 42px;
     margin-top: 25px;
+    margin-bottom: 40px;
 }
 .button{
     margin-left: 152px;
@@ -100,4 +101,6 @@ h3{
     width: 158px;
     height: 85px;
     margin-left: 120px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }

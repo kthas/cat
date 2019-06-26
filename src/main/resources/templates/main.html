@@ -248,11 +248,11 @@
             move:false,
             offset:'190px',//距离顶部位置
             content:'<form action="" id="registerForm">'+
+                '<img src="img/sleep1.gif" id="register-img" class="img-rounded"/>\n'+
                 '<input type="text" id="username" v-model="username" class="form-control" placeholder="账号" value="">' +
                 '<input type="password" id="password" v-model="password" class="form-control" placeholder="密码" value="">' +
                 '<input type="password" id="re_password" v-model="re_password" class="form-control" placeholder="确认密码" value="">' +
                 '<input type="text" id="nickname" v-model="nickname" class="form-control" placeholder="昵称" value="">' +
-                '<img src="img/sleep1.gif" id="register-img" class="img-rounded"/>\n'+
                 '<a href="javascript:void(0);"  v-on:click="registerFunction" class="button button-glow button-border button-rounded button-primary">注册</a>'+
                 '</form>'
         })
