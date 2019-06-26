@@ -12,11 +12,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
-    private User user = new User();
-
     @Override
     public User findByUsername(String username) {
-        return user;
+        return userMapper.findByUsername(username);
+    }
+
+    public User findByUsernameAndPassword(String username, String password) {
+        return userMapper.findByUsernameAndPassword(username, password);
     }
 
     public void saveUser(User user){

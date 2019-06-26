@@ -7,4 +7,8 @@
     <insert id="saveUser" parameterType="User">
         INSERT INTO cat_user values (null,#{username},#{password},#{nickname},#{createTime},#{lastLoginTime})
     </insert>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.xjy.cat.model.User">
+        SELECT * FROM cat_user WHERE id = #{id}
+    </select>
 </mapper>

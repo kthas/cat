@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HelloController extends BaseController{
+public class HelloController extends BaseController {
 
     @RequestMapping("/hello")
     @ResponseBody
@@ -19,4 +19,5 @@ public class HelloController extends BaseController{
     public ModelAndView mainPage(){
         return html("main");
     }
+
 }
