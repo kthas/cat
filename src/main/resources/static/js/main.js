@@ -496,13 +496,12 @@
 		// The GridLoaderFx instances.
 		loaders = [],
 		loadingTimeout;
-		console.log(body);
 	function init() {
 		// Preload images
 		imagesLoaded(body, function() {
 			// Initialize Masonry on each grid.
 			grids.forEach(function(grid) {
-				var m = new Masonry(grid, {
+				let m = new Masonry(grid, {
 					itemSelector: '.grid__item',
 					columnWidth: '.grid__sizer',
 					percentPosition: true,
@@ -516,10 +515,10 @@
 			});
 
 			// Show current grid.
-			grids[currentGrid].classList.remove('grid--hidden');
 			// Init/Bind events.
-			initEvents();
+			//initEvents();
 			// Remove loading class from body
+			applyFxFirst();
 			body.classList.remove('loading');
 		});
 	}
@@ -580,11 +579,10 @@
 
 		loadingTimeout = setTimeout(function() {
 			grids[currentGrid].classList.remove('grid--loading');
+			grids[currentGrid].classList.remove('grid--hidden');
 			// Apply effect.
 			loaders[currentGrid]._render("Montu");
 		}, 500);
 	}
 	init();
-	switchGridFirst();
-	applyFxFirst()
 })(window);
