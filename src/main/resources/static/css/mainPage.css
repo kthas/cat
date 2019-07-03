@@ -107,3 +107,15 @@ h3{
 #main-container{
     margin-top: 16px;
 }
+.grid__item img{
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.grid__item img:hover{
+    transform: scale(1.1);
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+.addIndex{
+    z-index: 100;
+}
+

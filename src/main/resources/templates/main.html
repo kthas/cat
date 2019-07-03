@@ -73,34 +73,34 @@
         <div class="content content--center">
             <div class="grid grid--type-c">
                 <div class="grid__sizer"></div>
-                <div class="grid__item">
+                <div  class="grid__item"  id="div1" @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/1.jpg" alt="Some image" /></a>
                 </div>
-                <div class="grid__item">
+                <div  class="grid__item"  @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/2.jpg" alt="Some image" /></a>
                 </div>
-                <div class="grid__item">
+                <div  class="grid__item"  @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/3.jpg" alt="Some image" /></a>
                 </div>
-                <div class="grid__item">
+                <div  class="grid__item"  @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/4.jpg" alt="Some image" /></a>
                 </div>
-                <div class="grid__item">
+                <div  class="grid__item"  @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/5.jpg" alt="Some image" /></a>
                 </div>
-                <div class="grid__item">
+                <div  class="grid__item"  @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/6.jpg" alt="Some image" /></a>
                 </div>
-                <div class="grid__item">
+                <div  class="grid__item"  @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/7.jpg" alt="Some image" /></a>
                 </div>
-                <div class="grid__item">
+                <div  class="grid__item"  @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/8.jpg" alt="Some image" /></a>
                 </div>
-                <div class="grid__item">
+                <div  class="grid__item"  @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/9.jpg" alt="Some image" /></a>
                 </div>
-                <div class="grid__item">
+                <div  class="grid__item"  @mouseenter="enter" @mouseleave="leave" v-bind:class="indexClass">
                     <a class="grid__link" href="#"><img class="grid__img" src="img/cat/10.jpg" alt="Some image" /></a>
                 </div>
             </div>
@@ -225,6 +225,23 @@
                 }
             }
         })
+    });
+
+    new Vue({
+        el:'.grid__item',
+        data:{
+            indexClass:{
+                addIndex:true,
+            }
+        },
+        methods :{
+            enter:function () {
+                this.indexClass.addIndex=true;
+            },
+            leave:function () {
+                this.indexClass.addIndex=false;
+            }
+        }
     });
 
 </script>
