@@ -80,14 +80,11 @@
         </div>
     </main>
 </div>
+<div id="test">
+    <a href="javascript:void(0);"  v-on:click="addPic" class="button button-glow button-border button-rounded button-primary">添加图片</a>
+</div>
 </body>
 <script>
-/*    //巨幕淡出效果
-    $(document).ready(function(){
-        $(".jumbotron").fadeIn(1000);
-        $("h1").fadeIn(2000);
-        $("h3").fadeIn(3000);
-    });*/
     //滚动条监控
     var beforeWinPos =0;//上一次滚动条位置，根据这个判断用户是继续下滑还是返回
     $(window).scroll(function(event){
@@ -209,7 +206,10 @@
                 {name:"7"},
                 {name:"8"},
                 {name:"9"},
-                {name:"10"}
+                {name:"10"},
+                {name:"1"},
+                {name:"2"},
+                {name:"3"}
             ],
             isActive : -1
         },

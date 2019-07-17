@@ -1,11 +1,36 @@
-<html xmlns:th="http://www.thymeleaf.org">
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+    <script src="js/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="js/layer/layer.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <link href="css/buttons.css" rel="stylesheet">
+    <link href="css/mainPage.css" rel="stylesheet">
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <!-- or -->
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+</head>
 <head>
     <meta charset="UTF-8">
     <title>thymeleafTest</title>
 </head>
 <body>
-<p th:text="${name}">hello</p>
+<div id="container" style="text-align: center;margin-top: 10%">
+    <img src="img/cat/1.jpg" alt="Some image" style="width: 269px;height: 337px;">
+</div>
 </body>
+<script >
+    // element
+    imagesLoaded( document.querySelector('#container'), function( instance ) {
+        console.log('all images are loaded');
+    });
+</script>
 </html>

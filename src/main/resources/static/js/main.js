@@ -581,6 +581,7 @@
 			grids[currentGrid].classList.remove('grid--loading');
 			grids[currentGrid].classList.remove('grid--hidden');
 			// Apply effect.
+			console.log(grids);
 			loaders[currentGrid]._render("Montu");
 		}, 500);
 	}

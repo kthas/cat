@@ -10,9 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class HelloController extends BaseController {
 
     @RequestMapping("/hello")
-    @ResponseBody
-    public ResponseDO hello(){
-        return build(true, "Hello", System.currentTimeMillis());
+    public ModelAndView hello(){
+        return html("hello");
     }
 
     @RequestMapping("/main")
