@@ -8,7 +8,6 @@
  * Copyright 2017, Codrops
  * http://www.codrops.com
  */
-;(function(window) {
 
 	/**
 	 * GridLoaderFx obj.
@@ -581,9 +580,7 @@
 			grids[currentGrid].classList.remove('grid--loading');
 			grids[currentGrid].classList.remove('grid--hidden');
 			// Apply effect.
-			console.log(grids);
 			loaders[currentGrid]._render("Montu");
 		}, 500);
 	}
 	init();
-})(window);
