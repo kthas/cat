@@ -16,7 +16,6 @@
 		this.el = el;
 		this.items = this.el.querySelectorAll('.grid__item > .grid__link');
 	}
-	
 	/**
 	 * Effects.
 	 */
@@ -580,7 +579,7 @@
 			grids[currentGrid].classList.remove('grid--loading');
 			grids[currentGrid].classList.remove('grid--hidden');
 			// Apply effect.
-			loaders[currentGrid]._render("Montu");
+			loaders[currentGrid]._render("Montu")
 		}, 500);
 	}
 	init();

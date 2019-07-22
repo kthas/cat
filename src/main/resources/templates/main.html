@@ -12,6 +12,7 @@
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
     <script src="js/layer/layer.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="js/modernizr.js"></script>
     <link href="css/buttons.css" rel="stylesheet">
     <link href="css/mainPage.css" rel="stylesheet">
     <style>
@@ -75,6 +76,8 @@
                 <div class="grid__sizer"></div>
                 <div  class="grid__item"  @mouseenter="enter(index)" @mouseleave="leave(index)" :class="isActive == index?'addIndex':''"  :style="{visibility:index>9?'hidden':'visible'}"   v-for="(item,index) in names">
                     <a class="grid__link" href="#"><img class="grid__img" :src="'img/cat/'+item.name+'.jpg'" alt="Some image" /></a>
+                    <div class="overlay">
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,9 +86,10 @@
 </body>
 <script>
     //滚动条监控
-    var beforeWinPos =0;//上一次滚动条位置，根据这个判断用户是继续下滑还是返回
+    let beforeWinPos =0;//上一次滚动条位置，根据这个判断用户是继续下滑还是返回
+    let stop = false;//第二次动画效果是否加载
     $(window).scroll(function(event){
-        var winPos = $(window).scrollTop();
+        let winPos = $(window).scrollTop();
         if(winPos<200&&beforeWinPos-winPos>0&&beforeWinPos>=200){
             $(".navbar").hide();
             $(".navbar").removeClass("navbar-inverse");
@@ -99,18 +103,33 @@
             $(".navbar-form").css('opacity',1);
         }
         beforeWinPos = winPos;
-        if (winPos + $(window).height() == $(document).height()&&winPos!=0) {
-            console.log(grids[0]);
-           $(".grid__item").filter(function()
-            {
-                if($(this).css("visibility")=="hidden")
+        if (winPos + $(window).height() >= $(document).height()*4/7&&winPos!=0&&stop==false) {
+            stop = true;
+            let nodeList = [].slice.call(loaders[0].items);
+            for (let i= 0;i<10;i++){
+                nodeList.splice(0,1);
+            }
+            loaders[0].items = nodeList;
+            // Simulate loading grid to show the effect.
+            //clearTimeout(loadingTimeout);
+            //grids[currentGrid].classList.add('grid--loading');
+
+            loadingTimeout = setTimeout(function() {
+                //grids[currentGrid].classList.remove('grid--loading');
+                //grids[currentGrid].classList.remove('grid--hidden');
+                // Apply effect.
+                loaders[currentGrid]._render("Montu");
+                $(".grid__item").filter(function()
                 {
-                    $(this).css("visibility","visible");
-                    applyFxFirst();
-                }
-            });
+                    if($(this).css("visibility")=="hidden")
+                    {
+                        $(this).css("visibility","visible");
+                    }
+                });
+            }, 500);
         }
     });
+
     //登陆弹出框
     $("#sign").click(function() {
         layer.open({
@@ -237,7 +256,6 @@
             }
         }
     });
-
 </script>
 <script src="js/imagesloaded.pkgd.min.js"></script>
 <script src="js/masonry.pkgd.min.js"></script>
