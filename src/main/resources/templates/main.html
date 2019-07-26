@@ -76,7 +76,11 @@
                 <div class="grid__sizer"></div>
                 <div  class="grid__item"  @mouseenter="enter(index)" @mouseleave="leave(index)" :class="isActive == index?'addIndex':''"  :style="{visibility:index>9?'hidden':'visible'}"   v-for="(item,index) in names">
                     <a class="grid__link" href="#"><img class="grid__img" :src="'img/cat/'+item.name+'.jpg'" alt="Some i" /></a>
-                    <p :style="{display:isActive == index?'block':'none'}">我是遮罩</p>
+                    <div class="cover"  :style="{display:isActive == index?'block':'none'}">
+                        <div><img src="img/avatar.jpg" class="img-circle avatar" style="pointer-events: none;"/>锟斤拷烫烫烫
+                            <span class="glyphicon glyphicon-thumbs-up likeSize" aria-hidden="true" >1000</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -253,7 +257,7 @@
             },
             leave:function (index) {
                 this.isActive=-1;
-            }
+            },
         }
     });
 </script>

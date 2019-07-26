@@ -1,36 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>MainPage</title>
-    <script src="js/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,500,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="css/demo.css" />
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
-    <script src="js/layer/layer.js"></script>
-    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
-    <link href="css/buttons.css" rel="stylesheet">
-    <link href="css/mainPage.css" rel="stylesheet">
-    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-    <!-- or -->
-    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
+    <title>如何使上层div遮住的按钮依然可以点击</title>
+    <style type="text/css">
+        body{margin: 0;padding: 0;}
+        .m-btn{margin: 100px;cursor: pointer;}
+        .m-test{position: absolute; pointer-events:none;top:0;left: 0; width: 100%;height: 100%;background-color: rgba(0,0,0,0.3);}
+    </style>
 </head>
-<head>
-    <meta charset="UTF-8">
-    <title>thymeleafTest</title>
-</head>
+
 <body>
-<div id="container" style="text-align: center;margin-top: 10%">
-    <img src="img/cat/1.jpg" alt="Some image" style="width: 269px;height: 337px;">
-</div>
-</body>
-<script >
-    // element
-    imagesLoaded( document.querySelector('#container'), function( instance ) {
-        console.log('all images are loaded');
-    });
+<input type="button" class="m-btn" id="m-btn" value="按钮">
+<div class="m-test" id="m-test"></div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var myAction = {};
+
+        var dom = {
+            btn: $('#m-btn'),
+            test: $('#m-test')
+        }
+
+        $.extend(myAction, {
+            initEvent: function() {
+                dom.btn.on('click', function () {
+                    console.log('点击了按钮');
+                }),
+                    dom.test.on('click', function () {
+                        console.log('点击了蒙层');
+                    })
+            }
+        });
+
+        var init = function() {
+            myAction.initEvent();
+        }();
+    })
 </script>
+</body>
+
 </html>
