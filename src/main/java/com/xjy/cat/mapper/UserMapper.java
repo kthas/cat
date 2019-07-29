@@ -17,7 +17,7 @@ public interface UserMapper {
      */
     void saveUser(User user);
 
-    @Select("SELECT id, username, nickname, createTime, lastLoginTime FROM cat_user WHERE BINARY username = #{username} AND password = #{password}")
+    @Select("SELECT * FROM cat_user WHERE BINARY username = #{username} AND password = #{password}")
     User findByUsernameAndPassword(@Param("username")String username, @Param("password")String password);
 
     @Select("SELECT id, username, nickname, createTime, lastLoginTime FROM cat_user WHERE BINARY username = #{username}")
