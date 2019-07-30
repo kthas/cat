@@ -13,6 +13,7 @@ import org.apache.shiro.subject.Subject;
 import javax.annotation.Resource;
 
 public class UserRealm extends AuthorizingRealm {
+
     @Resource(name="userServiceImpl")
     private UserService userService;
     //执行授权
@@ -32,9 +33,9 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
         // TODO Auto-generated method stub
-        System.out.println("认证");
         //shiro判断逻辑
         UsernamePasswordToken user = (UsernamePasswordToken) arg0;
+        System.out.println("认证用户:"+user.getUsername());
         User newUser = userService.findByUsernameAndPassword(user.getUsername(),String.copyValueOf(user.getPassword()));
         if(newUser == null){
             //用户名错误

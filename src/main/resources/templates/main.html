@@ -12,6 +12,7 @@
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
     <script src="js/layer/layer.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>
     <script src="js/modernizr.js"></script>
     <link href="css/buttons.css" rel="stylesheet">
     <link href="css/mainPage.css" rel="stylesheet">
@@ -43,11 +44,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a class="rigth-a" href="#">猫薄荷</a></li>
-                <li><a class="rigth-a" href="#">备用菜单一</a></li>
-                <li><a class="rigth-a" href="#">备用菜单二</a></li>
+                <li class="active"><a class="right-a" href="#">猫薄荷</a></li>
+                <li><a class="right-a" href="#">备用菜单一</a></li>
+                <li><a class="right-a" href="#">备用菜单二</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:void(0);" v-if="signAndRegisterShow" class="left-a" id="sign">登陆</a></li>
+                <li><a href="javascript:void(0);" v-if="signAndRegisterShow" class="left-a" id="register">注册</a></li>
+                <li><img :src="src" @click="userMsg" v-if="userShow" class="img-circle headAvatar" /></li>
                 <form class="navbar-form navbar-left">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for...">
@@ -56,8 +60,6 @@
                                 </span>
                     </div><!-- /input-group -->
                 </form>
-                <li><a href="javascript:void(0);" class="left-a" id="sign">登陆</a></li>
-                <li><a href="javascript:void(0);" class="left-a" id="register">注册</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -132,10 +134,23 @@
             }, 500);
         }
     });
-
+    let signAndRegister = new Vue({
+        el:'#bs-example-navbar-collapse-1',
+        data:{
+            signAndRegisterShow:true,
+            userShow:false,
+            src:'',
+            nickname:''
+        },
+        methods:{
+            userMsg () {
+                window.location.href="one";
+            }
+        }
+    });
     //登陆弹出框
     $("#sign").click(function() {
-        layer.open({
+        let sign = layer.open({
             type: 1,
             title: false,
             skin: 'demo-class',
@@ -148,7 +163,7 @@
                 '<input type="password" id="password" v-model="password" class="form-control" placeholder="密码" value="">' +
                 '<a href="javascript:void(0);"  v-on:click="signFunction" class="button button-glow button-border button-rounded button-primary" >登陆</a>' +
                 '</form>'
-        })
+        });
         new Vue({
             el: '#signForm',
             data: {
@@ -172,7 +187,11 @@
                                 if(data.msg=="用户名或密码错误")
                                     layer.msg(data.msg,{tips: [2,'#d79b5c']});
                             }else{
-
+                                layer.close(sign);
+                                signAndRegister.signAndRegisterShow = false;
+                                signAndRegister.userShow = true;
+                                signAndRegister.src = data.data.avatar;
+                                signAndRegister.nickname = data.data.nickname;
                             }
                         })
                 }

@@ -15,6 +15,16 @@ public class User {
 
     private String permission;
 
+    private String avatar;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public String getPermission() {
         return permission;
     }

@@ -1,21 +1,17 @@
 package com.xjy.cat.controller;
 
-import com.xjy.cat.DO.LoginDO;
+
 import com.xjy.cat.DO.ResponseDO;
 import com.xjy.cat.intf.TokenService;
 import com.xjy.cat.intf.UserService;
-import com.xjy.cat.kits.AccessTokenKit;
 import com.xjy.cat.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

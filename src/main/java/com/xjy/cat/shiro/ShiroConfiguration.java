@@ -34,9 +34,11 @@ public class ShiroConfiguration {
          */
         Map<String, String> fMap = new HashMap<String, String>();
         //拦截页面
-        fMap.put("/hello", "authc");
+        fMap.put("/main", "authc");
         //拦截未授权
-        fMap.put("/one", "perms[admin]");
+        fMap.put("/hello", "perms[admin]");
+        fMap.put("/one", "perms[user:one]");
+        fMap.put("/two", "perms[user:two]");
         //被拦截返回登录页面
         shiroFilterFactoryBean.setLoginUrl("/main");
         //授权拦截返回页面
