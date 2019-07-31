@@ -1,22 +1,32 @@
 package com.xjy.cat.controller;
 
+import com.xjy.cat.model.User;
+import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
-public class HelloController extends BaseController {
+public class PageController extends BaseController {
 
     @RequestMapping("/hello")
     public ModelAndView hello(){
         return html("hello");
     }
 
-    @RequestMapping("/main")
-    public ModelAndView mainPage(){
-        System.out.println(1111);
-        return html("main");
+    @RequestMapping("/login")
+    public ModelAndView login(){
+        return html("login");
     }
+
+
+    @RequestMapping("/index")
+    public ModelAndView index(){
+        return html("index");
+    }
+
 
     @RequestMapping("/permission")
     public ModelAndView permission(){

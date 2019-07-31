@@ -54,6 +54,6 @@ public class SHAKit {
     }
     public static void main(String[] args) {
         SHAKit sha = new SHAKit();
-        System.out.println(sha.SHA("xjy"));
+        System.out.println(sha.SHA("cpy"+"000000"));
     }
 }

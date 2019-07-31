@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+    <script src="js/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="js/layer/layer.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>
+    <script src="js/modernizr.js"></script>
+    <link href="css/buttons.css" rel="stylesheet">
+    <link href="css/mainPage.css" rel="stylesheet">
+    <style>
+        body .layui-layer{
+            border-radius: 10px;
+        }
+        body{
+            background-color:#2c2d31;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" id="Brand" src="img/catBrand.jpeg"/>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a class="right-a" href="#">猫薄荷</a></li>
+                <li><a class="right-a" href="#">备用菜单一</a></li>
+                <li><a class="right-a" href="#">备用菜单二</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:void(0);" v-if="signAndRegisterShow" class="left-a" id="sign">登陆</a></li>
+                <li><a href="javascript:void(0);" v-if="signAndRegisterShow" class="left-a" id="register">注册</a></li>
+                <li class="avatar-li">
+                    <img :src="src" @click="userMsg" v-if="userShow" class="img-circle headAvatar" />
+                    <div class="ass">我是一个冷酷无情的框框</div>
+                </li>
+                <form class="navbar-form navbar-left">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                                    <button class="btn btn-default " type="button"><span class="glyphicon glyphicon-search" aria-hidden="false"></span></button>
+                                </span>
+                    </div><!-- /input-group -->
+                </form>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+</nav>
+<div class="jumbotron">
+    <div class="container">
+        <h1>猫薄荷</h1>
+        <h3>猫吸薄荷，你吸猫</h3>
+    </div>
+</div>
+<div class="container" id="main-container">
+    <main>
+        <div class="content content--center">
+            <div class="grid grid--type-c">
+                <div class="grid__sizer"></div>
+                <div  class="grid__item"  @mouseenter="enter(index)" @mouseleave="leave(index)" :class="isActive == index?'addIndex':''"  :style="{visibility:index>9?'hidden':'visible'}"   v-for="(item,index) in names">
+                    <a class="grid__link" href="#"><img class="grid__img" :src="'img/cat/'+item.name+'.jpg'" alt="Some i" /></a>
+                    <div class="cover"  :style="{display:isActive == index?'block':'none'}">
+                        <div><img src="img/avatar.jpg" class="img-circle avatar" style="pointer-events: none;"/>锟斤拷烫烫烫
+                            <span class="glyphicon glyphicon-thumbs-up likeSize" aria-hidden="true" >1000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+<script>
+    //滚动条监控
+    let beforeWinPos =0;//上一次滚动条位置，根据这个判断用户是继续下滑还是返回
+    let stop = false;//第二次动画效果是否加载
+    $(window).scroll(function(){
+        let winPos = $(window).scrollTop();
+        if(winPos<200&&beforeWinPos-winPos>0&&beforeWinPos>=200){
+            $(".navbar").hide();
+            $(".navbar").removeClass("navbar-inverse");
+            $(".navbar").fadeIn(200);
+            $(".navbar-form").css('opacity',0.5);
+        }
+        if(winPos>=200&&beforeWinPos-winPos<0&&beforeWinPos<200){
+            $(".navbar").hide();
+            $(".navbar").addClass("navbar-inverse");
+            $(".navbar").fadeIn(200);
+            $(".navbar-form").css('opacity',1);
+        }
+        beforeWinPos = winPos;
+        if (winPos + $(window).height() >= $(document).height()*4/7&&winPos!=0&&stop==false) {
+            stop = true;
+            let nodeList = [].slice.call(loaders[0].items);
+            for (let i= 0;i<10;i++){
+                nodeList.splice(0,1);
+            }
+            loaders[0].items = nodeList;
+            // Simulate loading grid to show the effect.
+            //clearTimeout(loadingTimeout);
+            //grids[currentGrid].classList.add('grid--loading');
+
+            loadingTimeout = setTimeout(function() {
+                //grids[currentGrid].classList.remove('grid--loading');
+                //grids[currentGrid].classList.remove('grid--hidden');
+                // Apply effect.
+                loaders[currentGrid]._render("Montu");
+                $(".grid__item").filter(function()
+                {
+                    if($(this).css("visibility")=="hidden")
+                    {
+                        $(this).css("visibility","visible");
+                    }
+                });
+            }, 500);
+        }
+    });
+    let signAndRegister = new Vue({
+        el:'#bs-example-navbar-collapse-1',
+        data:{
+            signAndRegisterShow:false,
+            userShow:true,
+            src:'',
+            nickname:''
+        },
+        mounted:function(){
+            this.getUserMsg();
+        },
+        methods:{
+            getUserMsg:function(){
+                axios.post('/user/getUserMsg')
+                    .then(function(response){
+                        let data = response.data;
+                        if(data.success == true) {
+                            signAndRegister.src = data.data.avatar;
+                            signAndRegister.nickname = data.data.nickname;
+                        }
+                })
+
+            },
+            userMsg :function (){
+                window.location.href="one";
+            },
+        }
+    });
+    //登陆弹出框
+    $("#sign").click(function() {
+        let sign = layer.open({
+            type: 1,
+            title: false,
+            skin: 'demo-class',
+            area: ['420px', '320px'], //宽高
+            move: false,
+            offset: '190px',//距离顶部位置
+            content: '<form id="signForm">' +
+                '<img src="img/halfCat.jpg" id="sign-img" class="img-rounded"/>\n' +
+                '<input type="text" id="name" v-model="username" class="form-control" placeholder="账号" value="">' +
+                '<input type="password" id="password" v-model="password" class="form-control" placeholder="密码" value="">' +
+                '<a href="javascript:void(0);"  v-on:click="signFunction" class="button button-glow button-border button-rounded button-primary" >登陆</a>' +
+                '</form>'
+        });
+        new Vue({
+            el: '#signForm',
+            data: {
+                username: '',
+                password: ''
+            },
+            methods: {
+                signFunction: function () {
+                    let param = new URLSearchParams();
+                    param.append('username',this.username);
+                    param.append('password',this.password);
+                    axios.post('/user/login',param)
+                        .then(function(response){
+                            console.log(response.data);
+                            let data = response.data;
+                            if(data.success==false){
+                                if(data.msg=="用户名不能为空")
+                                    layer.tips(data.msg,"#name",{tips: [2,'#d79b5c']});
+                                if(data.msg=="密码不能为空")
+                                    layer.tips(data.msg,"#password",{tips: [2,'#d79b5c']});
+                                if(data.msg=="用户名或密码错误")
+                                    layer.msg(data.msg,{tips: [2,'#d79b5c']});
+                            }else{
+                                layer.close(sign);
+                            }
+                        })
+                }
+            }
+        });
+    });
+
+    //注册弹出框
+    $("#register").click(function(){
+        layer.open({
+            type: 1,
+            title:false,
+            skin: 'demo-class',
+            area: ['420px', '475px'], //宽高
+            move:false,
+            offset:'190px',//距离顶部位置
+            content:'<form action="" id="registerForm">'+
+                '<img src="img/halfCat.jpg" id="sign-img" class="img-rounded"/>\n' +
+                '<input type="text" id="username" v-model="username" class="form-control" placeholder="账号" value="">' +
+                '<input type="password" id="password" v-model="password" class="form-control" placeholder="密码" value="">' +
+                '<input type="password" id="re_password" v-model="re_password" class="form-control" placeholder="确认密码" value="">' +
+                '<input type="text" id="nickname" v-model="nickname" class="form-control" placeholder="昵称" value="">' +
+                '<a href="javascript:void(0);"  v-on:click="registerFunction" class="button button-glow button-border button-rounded button-primary">注册</a>'+
+                '</form>'
+        })
+        new Vue({
+            el:"#registerForm",
+            data:{
+                username:'',
+                password: '',
+                re_password:'',
+                nickname:'',
+            },
+            methods: {
+                registerFunction:function () {
+                    let param = new URLSearchParams();
+                    param.append('username',this.username);
+                    param.append('password',this.password);
+                    param.append('nickname',this.nickname);
+                    axios.post('register',param)
+                        .then(function(response) {
+                            let data = response.data;
+                        })
+                }
+            }
+        })
+    });
+
+    new Vue({
+        el:'#main-container',
+        data:{
+            names: [
+                {name:"1"},
+                {name:"2"},
+                {name:"3"},
+                {name:"4"},
+                {name:"5"},
+                {name:"6"},
+                {name:"7"},
+                {name:"8"},
+                {name:"9"},
+                {name:"10"},
+                {name:"11"},
+                {name:"12"},
+                {name:"13"},
+                {name:"14"},
+                {name:"15"},
+                {name:"16"},
+                {name:"17"},
+                {name:"18"},
+                {name:"19"},
+                {name:"20"},
+                {name:"21"}
+            ],
+            isActive : -1,
+        },
+        methods :{
+            enter:function (index) {
+                this.isActive=index;
+            },
+            leave:function (index) {
+                this.isActive=-1;
+            },
+        }
+    });
+</script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+<script src="js/anime.min.js"></script>
+<script src="js/main.js"></script>
+</html>

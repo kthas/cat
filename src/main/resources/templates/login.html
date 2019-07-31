@@ -192,6 +192,7 @@
                                 signAndRegister.userShow = true;
                                 signAndRegister.src = data.data.avatar;
                                 signAndRegister.nickname = data.data.nickname;
+                                window.location.href="index";
                             }
                         })
                 }
@@ -231,9 +232,10 @@
                     param.append('username',this.username);
                     param.append('password',this.password);
                     param.append('nickname',this.nickname);
-                    axios.post('register',param)
+                    axios.post('/user/register',param)
                         .then(function(response) {
                             let data = response.data;
+                            console.log(data);
                         })
                 }
             }

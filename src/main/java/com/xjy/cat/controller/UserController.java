@@ -4,6 +4,7 @@ package com.xjy.cat.controller;
 import com.xjy.cat.DO.ResponseDO;
 import com.xjy.cat.intf.TokenService;
 import com.xjy.cat.intf.UserService;
+import com.xjy.cat.kits.SHAKit;
 import com.xjy.cat.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Calendar;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/user")
@@ -26,11 +29,13 @@ public class UserController extends BaseController {
     @Resource(type = TokenService.class)
     private TokenService tokenService;
 
+    private SHAKit shaKit = new SHAKit();
     @RequestMapping("/login")
     public ResponseDO login(String username, String password,HttpServletRequest request) {
         //shiro用户认证
         //获取subject
         Subject subject = SecurityUtils.getSubject();
+        password = shaKit.SHA(username+password);
         UsernamePasswordToken userToken = new UsernamePasswordToken(username,password);
         if(username==null||username.isEmpty()){
             return build(false, "用户名不能为空");
@@ -50,16 +55,20 @@ public class UserController extends BaseController {
         }
     }
 
-    @RequestMapping("/user/info")
-    public ResponseDO info(String token) {
-        User user = tokenService.check(token);
-        if(user != null) {
-            return build(true, "", user);
-        } return build(false, "你的ACCESS_TOKEN错误");
+    @RequestMapping("/getUserMsg")
+    public ResponseDO getUserMsg(HttpSession session){
+        User user = (User)session.getAttribute("user");
+        return build(true,"获取成功",user);
     }
 
     @RequestMapping("/register")
     public ResponseDO register(User user){
+        //密码加密
+        user.setPassword(shaKit.SHA(user.getUsername()+user.getPassword()));
+        user.setCreateTime(new Date());
+        user.setLastLoginTime(new Date());
+        user.setPermission("admin");
+        user.setAvatar("img/avatar.jpg");
         userService.saveUser(user);
         return build(true,"注册成功");
     }

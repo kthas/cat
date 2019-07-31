@@ -5,7 +5,7 @@
 <mapper namespace="com.xjy.cat.mapper.UserMapper">
     <!--存入用户-->
     <insert id="saveUser" parameterType="User">
-        INSERT INTO cat_user values (null,#{username},#{password},#{nickname},#{createTime},#{lastLoginTime})
+        INSERT INTO cat_user values (null,#{username},#{password},#{nickname},#{createTime},#{lastLoginTime},#{permission},#{avatar})
     </insert>
 
     <select id="findById" parameterType="java.lang.Integer" resultType="com.xjy.cat.model.User">
