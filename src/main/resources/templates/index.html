@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,500,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" href="layui/css/layui.css"  media="all">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
@@ -51,9 +52,16 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:void(0);" v-if="signAndRegisterShow" class="left-a" id="sign">登陆</a></li>
                 <li><a href="javascript:void(0);" v-if="signAndRegisterShow" class="left-a" id="register">注册</a></li>
-                <li class="avatar-li">
-                    <img :src="src" @click="userMsg" v-if="userShow" class="img-circle headAvatar" />
-                    <div class="ass">我是一个冷酷无情的框框</div>
+                <li @mouseenter="avatarOn" @mouseleave="avatarOff" class="avatar-li">
+                    <img :src="src" @click="userMsg" v-if="userShow" :style="avatarMsg == true?avatarStyle:''" class="img-circle headAvatar" />
+                    <div class="ass " :style="avatarMsg == true?msgStyle:''">
+                        <b>{{nickname}}</b>
+                        <div class="logout">
+                            <a href="login">
+                                登出
+                            </a>
+                        </div>
+                    </div>
                 </li>
                 <form class="navbar-form navbar-left">
                     <div class="input-group">
@@ -143,7 +151,15 @@
             signAndRegisterShow:false,
             userShow:true,
             src:'',
-            nickname:''
+            nickname:'',
+            avatarMsg:false,
+            avatarStyle:{
+                'transform':'scale(1.4)',
+                'margin-top':'10px'
+            },
+            msgStyle:{
+                'display':'block',
+            }
         },
         mounted:function(){
             this.getUserMsg();
@@ -163,6 +179,12 @@
             userMsg :function (){
                 window.location.href="one";
             },
+            avatarOn :function () {
+                signAndRegister.avatarMsg = true;
+            },
+            avatarOff :function () {
+                signAndRegister.avatarMsg = false;
+            }
         }
     });
     //登陆弹出框

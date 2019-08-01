@@ -13,6 +13,9 @@
     border-radius:4px;
     margin-bottom: 0px;
 }
+.navOpacity{
+    opacity: 0.5;
+}
 .jumbotron {
     margin-bottom: 0px;
     background:url("../img/bigCat.jpeg");
@@ -47,9 +50,6 @@ h3{
 }
 .navbar-form{
     opacity: 0.5;
-}
-.layui-layer-content{
-
 }
 #name{
     width: 80%;
@@ -143,6 +143,7 @@ h3{
     width: 40px;
     height: 40px;
     margin-top: 5px;
+    transition: all 0.4s;
 }
 .likeSize{
     font-size: 18px;
@@ -159,8 +160,28 @@ h3{
     height: 40px;
 }
 .ass{
+    position:relative;
     width: 200px;
     height: 200px;
+    margin-left: -80px;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius:8px;
+    display: none;
+}
+.ass a{
+    text-decoration:none
+}
+.logout {
+    position:absolute;
+    left:0;
+    bottom:0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #f4f5f7;
+    border-radius: 4px 4px 4px 4px;
 }
 
 
