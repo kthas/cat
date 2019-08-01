@@ -54,7 +54,7 @@
                 <li><a href="javascript:void(0);" v-if="signAndRegisterShow" class="left-a" id="register">注册</a></li>
                 <li @mouseenter="avatarOn" @mouseleave="avatarOff" class="avatar-li">
                     <img :src="src" @click="userMsg" v-if="userShow" :style="avatarMsg == true?avatarStyle:''" class="img-circle headAvatar" />
-                    <div class="ass " :style="avatarMsg == true?msgStyle:''">
+                    <div class="chest" :style="avatarMsg == true?msgStyle:''">
                         <b>{{nickname}}</b>
                         <div class="logout">
                             <a href="login">
