@@ -13,6 +13,8 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -57,8 +59,12 @@ public class UserController extends BaseController {
 
     @RequestMapping("/getUserMsg")
     public ResponseDO getUserMsg(HttpSession session){
-        User user = (User)session.getAttribute("user");
-        return build(true,"获取成功",user);
+        if(session.getAttribute("user")!=null){
+            User user = (User)session.getAttribute("user");
+            return build(true,"获取成功",user);
+        }else{
+            return build(false,"用户已退出",null);
+        }
     }
 
     @RequestMapping("/register")
@@ -71,6 +77,12 @@ public class UserController extends BaseController {
         user.setAvatar("img/avatar.jpg");
         userService.saveUser(user);
         return build(true,"注册成功");
+    }
+
+    @RequestMapping("/logout")
+    public ModelAndView logout(HttpSession session){
+        session.removeAttribute("user");
+        return html("redirect:/login");
     }
 
 }

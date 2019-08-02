@@ -37,8 +37,8 @@ public class ShiroConfiguration {
         fMap.put("/index", "authc");
         //拦截未授权
         fMap.put("/hello", "perms[admin]");
-        fMap.put("/one", "perms[user:one]");
-        fMap.put("/two", "perms[user:two]");
+        fMap.put("/one", "perms[admin]");
+        fMap.put("/two", "perms[admin]");
         //被拦截返回登录页面
         shiroFilterFactoryBean.setLoginUrl("/login");
         //授权拦截返回页面

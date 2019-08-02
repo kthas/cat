@@ -183,6 +183,14 @@ h3{
     background-color: #f4f5f7;
     border-radius: 4px 4px 4px 4px;
 }
+.role{
+    padding: 2px 3px;
+    background: #29b840;
+    color: #fff!important;
+    border-radius: 3px;
+    width: 40%;
+    margin: 0 auto;
+}
 
 
 
