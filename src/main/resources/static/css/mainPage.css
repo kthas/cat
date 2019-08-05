@@ -199,7 +199,7 @@ h3{
 
 .hr{
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom:8px;
 }
 .levelAndCoin{
     font-size: 15px;
@@ -208,6 +208,7 @@ h3{
 .userFun{
     width:200px;
     float:left;
+    margin-top: 5px;
 }
 .userFun ul{
     width:180px;
