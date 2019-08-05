@@ -169,6 +169,7 @@ h3{
     padding: 10px;
     border-radius:8px;
     display: none;
+    margin-top: 5px;
 }
 .chest a{
     text-decoration:none
@@ -191,6 +192,32 @@ h3{
     width: 40%;
     margin: 0 auto;
 }
+.UserIcon{
+    width: 20px;
+    height: 20px;
+}
+
+.hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.levelAndCoin{
+    font-size: 15px;
+    padding: 1px;
+}
+.userFun{
+    width:200px;
+    float:left;
+}
+.userFun ul{
+    width:180px;
+}
+.userFun li{
+    width:90px;
+    float:left;
+    display:block;
+}
+
 
 
 

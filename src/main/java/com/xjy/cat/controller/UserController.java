@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Calendar;
 import java.util.Date;
 
 @RestController
@@ -27,9 +27,6 @@ public class UserController extends BaseController {
 
     @Resource(type = UserService.class)
     private UserService userService;
-
-    @Resource(type = TokenService.class)
-    private TokenService tokenService;
 
     private SHAKit shaKit = new SHAKit();
     @RequestMapping("/login")
@@ -83,6 +80,11 @@ public class UserController extends BaseController {
     public ModelAndView logout(HttpSession session){
         session.removeAttribute("user");
         return html("redirect:/login");
+    }
+
+    @RequestMapping("/userInfo")
+    public ModelAndView userInfo(HttpSession session){
+        return html("userInfo");
     }
 
 }
