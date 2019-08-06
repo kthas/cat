@@ -87,4 +87,9 @@ public class UserController extends BaseController {
         return html("userInfo");
     }
 
+
+    @RequestMapping("/editUser")
+    public ModelAndView editUser(){
+        return html("user_iframe/edit_user");
+    }
 }

@@ -38,14 +38,14 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img alt="Brand" id="Brand" src="img/catBrand.jpeg"/>
+                <img alt="Brand" id="Brand" src="/img/catBrand.jpeg"/>
             </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a class="right-a" href="#">猫薄荷</a></li>
+                <li class="active"><a class="right-a" href="/index">猫薄荷</a></li>
                 <li><a class="right-a" href="#">备用菜单一</a></li>
                 <li><a class="right-a" href="#">备用菜单二</a></li>
             </ul>
@@ -53,33 +53,33 @@
                 <li><a href="javascript:void(0);" v-if="signAndRegisterShow" class="left-a" id="sign">登陆</a></li>
                 <li><a href="javascript:void(0);" v-if="signAndRegisterShow" class="left-a" id="register">注册</a></li>
                 <li @mouseenter="avatarOn" @mouseleave="avatarOff" class="avatar-li">
-                    <img :src="src" @click="userMsg" v-if="userShow" :style="avatarMsg == true?avatarStyle:''" class="img-circle headAvatar" />
+                    <img :src="src" v-if="userShow" :style="avatarMsg == true?avatarStyle:''" class="img-circle headAvatar" />
                     <div class="chest layui-anim layui-anim-upbit" :style="avatarMsg == true?msgStyle:''">
                         <b>{{nickname}}</b>
                         <div class="levelAndCoin">
-                            <img src="img/lvCat.jpg" class="UserIcon" />
-                            <b>等级:10</b>
+                            <img src="/img/lvCat.jpg" class="UserIcon" />
+                            等级:10
                         </div>
                         <div class="levelAndCoin">
-                            <img src="img/coin.jpg" class="UserIcon" />
-                            <b>猫饼:100</b>
+                            <img src="/img/coin.jpg" class="UserIcon" />
+                            猫饼:100
                         </div>
                         <div class="logout">
-                            <a href="user/logout">
+                            <a href="/user/logout">
                                 登出
                             </a>
                         </div>
                         <!--分隔线-->
-                        <hr style="filter: alpha(opacity=100,finishopacity=0,style=3)"  width="100%" color="#6f5499" size="3" margin="0 auto" class="hr"/>
+                        <hr style="filter: alpha(opacity=100,finishopacity=0,style=3)"  width="100%" color="#6f5499" size="3" margin="0 auto"  class="hr"/>
                         <div class="role">
                             <span>{{role}}</span>
                         </div>
                         <div class="userFun">
                             <ul>
-                                <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><a href="user/userInfo">个人中心</a></li>
-                                <li><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>我的帖子</li>
-                                <li><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>我的收藏</li>
-                                <li><span class="glyphicon glyphicon-book" aria-hidden="true"></span>浏览历史</li>
+                                <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<a href="user/userInfo">个人中心</a></li>
+                                <li><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>&nbsp;我的帖子</li>
+                                <li><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>&nbsp;我的收藏</li>
+                                <li><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;浏览历史</li>
                             </ul>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-</nav>
+
 <div class="jumbotron">
     <div class="container">
         <h1>猫薄荷</h1>
@@ -203,9 +203,6 @@
                         }
                 })
 
-            },
-            userMsg :function (){
-                window.location.href="one";
             },
             avatarOn :function () {
                 signAndRegister.avatarMsg = true;
