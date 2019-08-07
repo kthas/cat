@@ -36,6 +36,7 @@ public class ShiroConfiguration {
         //拦截页面
         fMap.put("/index", "authc");
         //拦截未授权
+        //fMap.put("/user/**", "perms[admin]");
         fMap.put("/hello", "perms[admin]");
         fMap.put("/one", "perms[admin]");
         fMap.put("/two", "perms[admin]");
