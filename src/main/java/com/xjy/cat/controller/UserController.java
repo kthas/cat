@@ -14,7 +14,6 @@ public class UserController extends BaseController {
 
     @RequestMapping("/getUserMsg")
     public ResponseDO getUserMsg(HttpSession session){
-        System.out.println(session.getMaxInactiveInterval());
         if(session.getAttribute("user")!=null){
             User user = (User)session.getAttribute("user");
             return build(true,"获取成功",user);
