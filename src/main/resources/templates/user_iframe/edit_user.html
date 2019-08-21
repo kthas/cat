@@ -7,13 +7,39 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <script src="/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/accountMsg.css" />
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
     <title>个人信息</title>
 </head>
 <body>
 <div class="container" id="app">
     <div class="account-main">
-        <img src="/img/avatar.jpg" alt="头像" class="img-circle avatar">
+        <div><img :src="src" alt="头像" class="img-circle avatar"></div>
+        <div><a href="#">修改头像</a></div>
     </div>
 </div>
+<script>
+    let accountMsg = new Vue({
+        el:'#app',
+        data:{
+            username:'',
+            nickname:'',
+            src:''
+        },
+        mounted:function(){
+            this.getUserMsg();
+        },
+        methods :{
+            getUserMsg:function () {
+                axios.post('/user/getUserMsg')
+                    .then(function (response) {
+                        let data = response.data;
+                        accountMsg.src = data.data.avatar;
+                        console.log(accountMsg.src)
+                    })
+            }
+        }
+    })
+</script>
 </body>
 </html>
