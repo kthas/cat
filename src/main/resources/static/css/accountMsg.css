@@ -7,3 +7,18 @@
     margin-top: 20px;
     margin-bottom: 5px;
 }
+.nickname{
+    font-size: 40px;
+}
+.accountCommon{
+    font-size: 18px;
+    font-family:"Microsoft YaHei";
+    color: #6c6e68;
+}
+.coinIcon{
+    width: 20px;
+    height: 20px;
+}
+.edit-btn{
+    margin-top: 20px;
+}

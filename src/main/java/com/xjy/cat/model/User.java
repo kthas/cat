@@ -10,12 +10,34 @@ public class User {
     private String password;
     //昵称
     private  String nickname;
+
     private Date createTime;
+
     private Date lastLoginTime;
-
+    //权限
     private String permission;
-
+    //头像路径
     private String avatar;
+    //硬币
+    private int coin;
+    //等级
+    private int level;
+
+    public int getCoin() {
+        return coin;
+    }
+
+    public void setCoin(int coin) {
+        this.coin = coin;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
 
     public String getAvatar() {
         return avatar;

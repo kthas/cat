@@ -43,6 +43,7 @@ public class LoginController  extends BaseController{
         //shiro用户认证
         //获取subject
         Subject subject = SecurityUtils.getSubject();
+        //密码加密
         password = shaKit.SHA(username+password);
         UsernamePasswordToken userToken = new UsernamePasswordToken(username,password);
         if(username==null||username.isEmpty()){

@@ -49,11 +49,11 @@
                         <b>{{nickname}}</b>
                         <div class="levelAndCoin">
                             <img src="/img/lvCat.jpg" class="UserIcon" />
-                            等级:10
+                            等级:{{level}}
                         </div>
                         <div class="levelAndCoin">
                             <img src="/img/coin.jpg" class="UserIcon" />
-                            猫饼:100
+                            猫饼:{{coin}}
                         </div>
                         <div class="logout">
                             <a href="/loginAbout/logout">
@@ -116,6 +116,8 @@
             nickname:'',
             avatarMsg:false,
             role:'',
+            coin:0,
+            level:0,
             avatarStyle:{
                 'transform':'scale(1.3)',
                 'margin-top':'10px'
@@ -135,6 +137,8 @@
                         if(data.success == true) {
                             signAndRegister.src = data.data.avatar;
                             signAndRegister.nickname = data.data.nickname;
+                            signAndRegister.level = data.data.level;
+                            signAndRegister.coin = data.data.coin;
                             if(data.data.permission=="admin"){
                                 signAndRegister.role = "管理员";
                             }
