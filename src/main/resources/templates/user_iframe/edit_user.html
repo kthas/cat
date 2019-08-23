@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/css/accountMsg.css" />
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <script src="/js/layer/layer.js"></script>
     <link href="/css/buttons.css" rel="stylesheet">
     <title>个人信息</title>
 </head>
@@ -16,7 +18,7 @@
 <div class="container" id="app">
     <div class="account-main">
         <div><img :src="src" alt="头像" class="img-circle avatar"></div>
-        <div><a href="#">更改头像</a></div>
+        <div><a href="javascript:void(0)" @click="changeAvatar">更改头像</a></div>
         <div class="nickname">{{nickname}}</div>
         <div class="accountCommon">LV：{{level}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/img/coin.jpg" class="coinIcon">猫饼：{{coin}}</div>
         <div class="edit-btn"><a href="javascript:void(0)" class="button button-glow button-rounded button-highlight">修改个人资料</a></div>
@@ -46,6 +48,23 @@
                         accountMsg.coin = data.data.coin;
                         accountMsg.level = data.data.level;
                     })
+            },
+            changeAvatar:function () {
+                let sign = layer.open({
+                    type: 1,
+                    title: false,
+                    skin: 'demo-class',
+                    area: ['420px', '300px'], //宽高
+                    move: false,
+                    offset: '150px',//距离顶部位置
+                    content:
+                        '<div class="avatar-change">'+
+                            '<form id="avavtar">' +
+                            '<input type="file" id="avatar-img"  class="" placeholder="密码" value="">' +
+                            '<div class="avatar-change-btn"><a href="javascript:void(0);"  v-on:click="change" class="button button-glow button-border button-rounded button-primary" >更换</a></div>' +
+                            '</form>'+
+                        '</div>'
+                });
             }
         }
     })
