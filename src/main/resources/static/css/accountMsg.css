@@ -26,5 +26,20 @@
     text-align: center;
 }
 .avatar-change-btn{
-    margin-top: 200px;
+    margin:10px;
+}
+.select-btn{
+    margin:10px;
+}
+.preview{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 2px;
+}
+.preI{
+    background: #c2c2c2;
+}
+.file{
+    display: none;
 }
