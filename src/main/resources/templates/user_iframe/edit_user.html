@@ -17,7 +17,7 @@
 <body>
 <div class="container" id="app">
     <div class="account-main">
-        <div><img :src="src" alt="头像" class="img-circle avatar"></div>
+        <div><img :src="src" alt="头像" class="img-circle avatar" accept="image/png,image/gif,image/jpeg"></div>
         <div><a href="javascript:void(0)" @click="changeAvatar">更改头像</a></div>
         <div class="nickname">{{nickname}}</div>
         <div class="accountCommon">LV：{{level}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/img/coin.jpg" class="coinIcon">猫饼：{{coin}}</div>
@@ -54,7 +54,7 @@
                     type: 1,
                     title: false,
                     skin: 'demo-class',
-                    area: ['420px', '330px'], //宽高
+                    area: ['420px', '320px'], //宽高
                     move: false,
                     offset: '150px',//距离顶部位置
                     content:
@@ -63,7 +63,7 @@
                                 '<div class="select-btn"><a href="javascript:void(0);" @click="selectImg" class="button button-3d button-primary button-rounded">选择图片</a></div>'+
                                 '<div class="file"><input type="file" id="uploadImg" ref="uploadImg" class="" placeholder="上传头像" value="" @change="preview"/></div>' +
                                 '<div class="preI"><img src="" id="preview" class=" preview" onerror="this.src=accountMsg.src"/></div>'+
-                                '<div class="avatar-change-btn"><a href="javascript:void(0);"  @click="selectImg" class="button button-glow button-border button-rounded button-primary" >更换</a></div>' +
+                                '<div class="avatar-change-btn"><a href="javascript:void(0);"  @click="uploadImg" class="button button-glow button-border button-rounded button-primary" >更换</a></div>' +
                             '</form>'+
                         '</div>'
                 });
@@ -85,10 +85,25 @@
                                 };
                                 fileReader.readAsDataURL(imgSrc);
                             }
+                        },
+                        uploadImg:function () {
+                            if ($('#uploadImg').val() != ""&&$('#uploadImg').val() != null) {
+                                let file = document.getElementById("uploadImg").files[0];
+                                let param = new FormData();
+                                param.append('file',file,file.name);
+                                let config = {
+                                    headers: {'Content-Type': 'multipart/form-data'}
+                                };
+                                // 添加请求头
+                                axios.post('/user/changeAvatar', param,config)
+                                    .then(response => {
+                                        console.log(response.data)
+                                    })
+                            }
                         }
                     }
                 })
-            },
+            }
         }
     })
 </script>

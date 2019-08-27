@@ -33,6 +33,7 @@ public class ShiroConfiguration {
            user:当登入操作时不做检查
          */
         Map<String, String> fMap = new HashMap<String, String>();
+        fMap.put("/images/**","anon");
         //拦截页面
         fMap.put("/index", "authc");
         //拦截未授权

@@ -4,9 +4,16 @@ package com.xjy.cat.controller;
 import com.xjy.cat.DO.ResponseDO;
 import com.xjy.cat.model.User;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/user")
@@ -64,4 +71,26 @@ public class UserController extends BaseController {
         return html("user_iframe/historyInvitation");
     }
 
+    @RequestMapping("/changeAvatar")
+    public ResponseDO changeAvatar(@RequestParam("file") MultipartFile file,HttpSession session){
+        if(session.getAttribute("user") != null) {
+            User user = (User) session.getAttribute("user");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+            String time = df.format(new Date());
+            String fileName = "avatar"+"_"+user.getUsername()+"_"+time+".jpeg";
+            File avatar = new File("D://catFile//avatar//"+fileName);
+            if(avatar.exists()){
+                avatar.delete();
+            }else{
+                try {
+                    file.transferTo(avatar);
+                }catch (IOException e){
+                    return null;
+                }
+            }
+            return build(true, "修改成功", null);
+        }else{
+            return null;
+        }
+    }
 }
