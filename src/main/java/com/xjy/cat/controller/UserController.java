@@ -3,6 +3,8 @@ package com.xjy.cat.controller;
 
 import com.xjy.cat.DO.ResponseDO;
 import com.xjy.cat.model.User;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +19,11 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/user")
+@PropertySource("classpath:constant.properties")
 public class UserController extends BaseController {
+
+    @Value("${properties.uploadPath}")
+    private String uploadPath;
 
     @RequestMapping("/getUserMsg")
     public ResponseDO getUserMsg(HttpSession session){
@@ -78,14 +84,19 @@ public class UserController extends BaseController {
             SimpleDateFormat df = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
             String time = df.format(new Date());
             String fileName = "avatar"+"_"+user.getUsername()+"_"+time+".jpeg";
-            File avatar = new File("D://catFile//avatar//"+fileName);
+            File avatarDir = new File(uploadPath+File.separator+"avatar");
+            File avatar = new File(uploadPath+File.separator+"avatar"+File.separator+fileName);
+            if(!avatarDir.exists()){
+                avatarDir.mkdirs();
+            }
             if(avatar.exists()){
                 avatar.delete();
             }else{
                 try {
                     file.transferTo(avatar);
                 }catch (IOException e){
-                    return null;
+                    System.out.println("发生未知错误，头像上传失败");
+                    return build(false,"修改失败");
                 }
             }
             return build(true, "修改成功", null);
