@@ -28,4 +28,8 @@ public class UserServiceImpl implements UserService {
         userMapper.saveUser(user);
     }
 
+    public void saveAvatar(String avatar,Integer id){
+        userMapper.saveAvatar(avatar,id);
+    }
+
 }

@@ -5,10 +5,17 @@
 <mapper namespace="com.xjy.cat.mapper.UserMapper">
     <!--存入用户-->
     <insert id="saveUser" parameterType="User">
-        INSERT INTO cat_user values (null,#{username},#{password},#{nickname},#{createTime},#{lastLoginTime},#{permission},#{avatar})
+        INSERT INTO cat_user value (null,#{username},#{password},#{nickname},#{createTime},#{lastLoginTime},#{permission},#{avatar})
     </insert>
+
+    <!--存入用户头像-->
+    <update id="saveAvatar">
+        UPDATE cat_user SET avatar = #{avatar} WHERE id = #{id}
+    </update>
 
     <select id="findById" parameterType="java.lang.Integer" resultType="com.xjy.cat.model.User">
         SELECT * FROM cat_user WHERE id = #{id}
     </select>
+
+
 </mapper>

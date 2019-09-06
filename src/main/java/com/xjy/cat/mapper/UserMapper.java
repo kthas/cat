@@ -25,4 +25,6 @@ public interface UserMapper {
 
     User findById(@Param("id") int id);
 
+    void saveAvatar(@Param("avatar") String avatar,@Param("id") Integer id);
+
 }

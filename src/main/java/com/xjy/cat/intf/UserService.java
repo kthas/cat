@@ -11,4 +11,6 @@ public interface UserService {
 
     void saveUser(User user);
 
+    void saveAvatar(String avatar,Integer id);
+
 }

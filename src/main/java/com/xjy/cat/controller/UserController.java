@@ -2,6 +2,7 @@ package com.xjy.cat.controller;
 
 
 import com.xjy.cat.DO.ResponseDO;
+import com.xjy.cat.intf.UserService;
 import com.xjy.cat.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
 import java.io.File;
@@ -24,6 +27,9 @@ public class UserController extends BaseController {
 
     @Value("${properties.uploadPath}")
     private String uploadPath;
+
+    @Resource
+    private UserService userService;
 
     @RequestMapping("/getUserMsg")
     public ResponseDO getUserMsg(HttpSession session){
@@ -79,6 +85,7 @@ public class UserController extends BaseController {
 
     @RequestMapping("/changeAvatar")
     public ResponseDO changeAvatar(@RequestParam("file") MultipartFile file,HttpSession session){
+        String prefixPath = "/images/avatar/";
         if(session.getAttribute("user") != null) {
             User user = (User) session.getAttribute("user");
             SimpleDateFormat df = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
@@ -94,6 +101,11 @@ public class UserController extends BaseController {
             }else{
                 try {
                     file.transferTo(avatar);
+                    //存入头像
+                    userService.saveAvatar(prefixPath+fileName,user.getId());
+                    user.setAvatar(prefixPath+fileName);
+                    //存入完成后刷新session
+                    session.setAttribute("user",user);
                 }catch (IOException e){
                     System.out.println("发生未知错误，头像上传失败");
                     return build(false,"修改失败");
