@@ -83,6 +83,13 @@ public class UserController extends BaseController {
         return html("user_iframe/historyInvitation");
     }
 
+
+    /**
+     * 头像修改控制类
+     * @param file
+     * @param session
+     * @return
+     */
     @RequestMapping("/changeAvatar")
     public ResponseDO changeAvatar(@RequestParam("file") MultipartFile file,HttpSession session){
         String prefixPath = "/images/avatar/";

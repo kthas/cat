@@ -21,7 +21,7 @@
         <div><a href="javascript:void(0)" @click="changeAvatar">更改头像</a></div>
         <div class="nickname">{{nickname}}</div>
         <div class="accountCommon">LV：{{level}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/img/coin.jpg" class="coinIcon">猫饼：{{coin}}</div>
-        <div class="edit-btn"><a href="javascript:void(0)" class="button button-glow button-rounded button-highlight">修改个人资料</a></div>
+        <div class="edit-btn"><a href="javascript:void(0)" @click="edit"  class="button button-glow button-rounded button-highlight">修改个人资料</a></div>
         <hr style="filter: alpha(opacity=100,finishopacity=0,style=3)"  width="100%" color="#6f5499" size="3" margin="0 10"  class="hr"/>
     </div>
 </div>
@@ -111,6 +111,24 @@
                         }
                     }
                 })
+            },
+            edit:function () {
+                let sign = layer.open({
+                    type: 1,
+                    title: false,
+                    skin: 'demo-class',
+                    area: ['420px', '320px'], //宽高
+                    move: false,
+                    offset: '150px',//距离顶部位置
+                    content:
+                        '<div class="edit-user">'+
+                        '<form id="edit-user">' +
+                        '<div><input type="text" id="nickname" v-model="nickname" class="form-control" placeholder="昵称" value=""></div>' +
+                        '<div><input type="text" id="old-password" v-model="old-password" class="form-control" placeholder="旧密码" value=""></div>' +
+                        '<div><input type="text" id="new-password" v-model="new-password" class="form-control" placeholder="新密码" value=""></div>' +
+                        '</form>'+
+                        '</div>'
+                });
             }
         }
     })
